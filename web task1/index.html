@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 1</title>
+</head>
+<body>
+    <h1>Список гиперссылок</h1>
+    <ul>
+        <li><a href="http://kubsu.ru">Абсолютная гиперссылка на главную страницу сайта kubsu.ru</a></li>
+        <li><a href="https://kubsu.ru">Абсолютная гиперссылка на главную сайта kubsu.ru в протоколе https</a></li>
+        <li><a href="https://kubsu.ru"><img src="https://газета-вся-тверь.рф/upload/iblock/d17/d179adda8d37fb3b98571f915d195cc6.jpg" height="25%" width="25%" alt="Ссылка на собаку"></a></li>
+        <li><a href="/index">Сокращенная ссылка на внутреннюю страницу</a></li>
+        <li><a href="/">Сокращенная ссылка на главную страницу</a></li>
+        <li><a href="#">Ссылка на фрагмент текущей страницы</a></li>
+        <li><a href="https://mysite.com/?p1=a1&p2=a2&p3=a3">Ссылка с тремя параметрами в URL</a></li>
+        <li><a href="/?id=gpus">Ссылка с параметром id в URL</a></li>
+        <li>
+            <a href="about/something.html">Страница в каталоге about</a>
+        </li>
+        <li>
+            <a href="about/something1.html">Страница в каталоге уровнем выше</a>
+        </li>
+        <li>
+            <a href="about/about2/something2.html">Страница в каталоге двумя уровнями выше</a>
+        </li>
+        <li><p>Контекстная <a href="/">ссылка</a> в тексте абзаца</p></li>
+        <li><a href="https://www.jetbrains.com/ru-ru/products/#type=team">Ссылка на фрагмент страницы стороннего сайта</a></li>
+        <li>
+            <img src="https://газета-вся-тверь.рф/upload/iblock/d17/d179adda8d37fb3b98571f915d195cc6.jpg" alt="Ссылка на собаку" height="25%" width="25%" usemap="#dog">
+            <map name="dog">
+                <area shape="circle" coords="20,20,50" alt="circle" href="https://vk.com/">
+                <area shape="rect" coords="60,60,160,120" alt="rect" href="https://web.telegram.org/a/">
+            </map>
+        </li>
+        <li><a href="">Ссылка с пустым href</a></li>
+        <li><a>Ссылка без href</a></li>
+        <li><a href="/" rel="nofollow">Ссылка, по которой запрещен переход поисковикам</a></li>
+        <li><a href="/" rel="noindex">Запрещенная для индексации поисковиками</a></li>
+    </ul>
+    <ol>
+        <li>
+        <a href="https://kubsu.ru" title="Сайт КубГУ">Наведи и узнай куда ведет ссылка</a>
+        </li>
+        <li>
+         <a href="https://ru.wikipedia.org/wiki/Заглавная_страница" title="Сайт Викпедия">Наведи и узнай куда ведет ссылка</a>
+        </li>
+        <li>
+        <a href="https://jut.su/kime-no-yaiba/season-4/episode-11.html" title="Клинок, рассекающий демонов 4 сезон 11 серия">Наведи и узнай куда ведет ссылка</a></li>
+    </ol>
+    <ul>
+        <li><a href="">Ссылка на файл на сервере FTP с авторизацией</a></li>
+    </ul>
+
+
+    <h1>Форма</h1>
+    <form action="#" method="post">
+        <label>
+            ФИО:
+            <br/>
+            <input name="name" placeholder="Фамилия Имя Отчество">
+        </label>
+        <br/>
+        <br/>
+        <label>
+            Номер телефона:
+            <br/>
+            <input name="number" placeholder="Введите номер телефона">
+        </label>
+        <br/>
+        <br/>
+        <label>
+            Почта:
+            <br/>
+            <input name="email" placeholder=" Введите email">
+        </label>
+        <br/>
+        <br/>
+        <label>
+        Дата рождения:
+            <br/>
+            <input name="date" value="2000-01-01" type="date">
+        </label>
+        <br/>
+        <br/>
+        <label>
+            Ваш пол:
+            <br/>
+             <input name="radio1" type="radio" > Мужской
+            <br/>
+            </label>
+            <label>
+            <input name="radio1" type="radio"  > Женский
+        </label>
+        <br/>
+        <br/>
+        <label>
+            Выберите любимый язык программирования:
+            <br/>
+        <select name="lyubimiy yazik" multiple="multiple">
+            <option value="Pascal">Pascal</option>
+            <option value="C">C</option>
+            <option value="C++">C++</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="PHP">PHP</option>
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="Haskel">Haskel</option>
+            <option value="Clojure">Clojure</option>
+            <option value="Prolog">Prolog</option>
+            <option value="Scala">Scala</option>
+        </select>
+        </label>
+        <br/>
+        <br/>
+        <label>
+            Введите вашу биографию:
+            <br/>
+            <textarea name="biografy" placeholder="Напишите вашу биографию" style="height: 100px;width:400px ;"></textarea>
+        </label>
+        <br/>
+        <br/>
+        <label>
+            <input name="check" type="checkbox" value="Значение 1"> С контрактом ознакомлен(а).
+        </label>
+        <br/>
+        <br/>
+        <label>
+            <input name="save" type="submit" value="Сохранить">
+        </label>
+    </form>
+</body>
+</html>
