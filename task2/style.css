@@ -1,1 +1,128 @@
+body
+{
+    color: #d4d4d7;
+    background-color: #2d2a2e;
+    font-family: "Century Gothic";
+    font-size: 20px;
+}
 
+header
+{
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 10pc;
+    margin-top: -8px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-bottom: 5px solid #ffd866;;
+    border-radius: 10px;
+    justify-content: space-between;
+}
+
+
+footer
+{
+    display: block;
+    width: 100%;
+    height: 2pc;
+    background-color: #d8d058;
+    border-radius: 10px;
+}
+
+h2.in-footer
+{
+    text-align: center;
+}
+
+nav.header-logo
+{
+    float: left;
+    height: 230px;
+    width: 230px;
+}
+
+nav.header-title
+{
+    text-align: left;
+    height: 2pc;
+    font-size: 40px;
+}
+
+nav.header-task
+{
+    text-align: center;
+    font-size: 30px;
+}
+
+nav.header-link
+{
+    float: right;
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #2d2a2e;
+    border-radius: 10px;
+}
+
+img.header-logo
+{
+    width: 70%;
+    height: 70%;
+}
+
+
+tr
+{
+    background-color: #d4d4d7;
+    border-bottom: 2px solid #2d2a2e;
+}
+
+tr.odd
+{
+    background-color: #d4d4d7;
+}
+
+tr.even
+{
+    background-color: #ffd866;
+}
+
+.black
+{
+    color: #2d2a2e;
+}
+
+input
+{
+    background-color: #d4d4d7;
+}
+
+a:link
+{
+    color: #ffe16f;
+}
+
+a:visited
+{
+    color: #ff6231;
+}
+
+a:active
+{
+    color: #ffc100;
+}
+
+a:hover
+{
+    color: #ffc200;
+}
+
+textarea
+{
+    background-color: #d4d4d7;
+}
+
+select
+{
+    background-color: #d4d4d7;
+}
