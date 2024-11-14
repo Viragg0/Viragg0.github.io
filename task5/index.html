@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <script src="calculator.js" defer></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Задание 5</title>
+</head>
+
+<body>
+    <header>
+        <nav class="header-logo">
+            <img class="header-logo" src="/logo.png" alt="Logo">
+        </nav>
+        <nav class="header-info">
+            <h2 class="header-title">$$$ website?</h2>
+            <h3 class="header-task">Задание 5</h3>
+        </nav>
+
+    </header>
+
+    <aside>
+        <nav class="aside-link">
+            <a href="../index.html" class="">Главная страница</a>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="calculator">
+            <h1 class="">Калькулятор товаров</h1>
+
+            <label for="products" class="">Наименования товаров</label>
+            <select id="products" name="products" required>
+                <option value="249.99">Пельмени - 249.99 руб.</option>
+                <option value="69.99">Сметана - 69.99 руб.</option>
+                <option value="149.99">Брусничный соус - 149.99 руб.</option>
+                <option value="69.99">Добрый кола - 69.99 руб.</option>
+                <option value="99.99">Малосольные огурцы - 99.99 руб.</option>
+                <option value="5.99">Пакет - 5.99 руб.</option>
+            </select>
+
+            <label class="" for="number">Количество выбранного товара:</label>
+            <input type="number" id="number" min="0" required>
+
+            <input type="button" id="button" onclick="calculate_price()" value="Подсчитать стоимость">
+
+            <label for="result" class="">Стоимость заказа:</label>
+            <div id="result" class=""></div>
+        </div>
+    </main>
+
+    <footer>
+        <p class=" text_in_footer">created by</p>
+        <h3 class=" text_in_footer">Денис Чупилко</h3>
+    </footer>
+</body>
+
+</html>
