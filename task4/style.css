@@ -50,6 +50,8 @@ footer
 nav.header-logo
 {
     float: left;
+    display: flex;
+    gap: 30px;
 }
 
 img.header-logo
