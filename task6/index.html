@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="calculator.js" defer></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Задание 6</title>
+</head>
+
+<body>
+<header>
+    <nav class="header-logo">
+        <img class="header-logo" src="/chillBOy.png" alt="Logo">
+    </nav>
+    <nav class="header-info">
+        <h2 class="header-title">just chill website?</h2>
+        <h3 class="header-task">Задание 6</h3>
+    </nav>
+
+</header>
+
+<aside>
+    <nav class="aside-link">
+        <a href="../index.html" class="">Главная страница</a>
+    </nav>
+</aside>
+
+<main>
+    <div class="services_calculator">
+        <h1 class="">Калькулятор товаров</h1>
+
+        <label for="radio" class="">Товар:</label>
+        <div id="radio">
+            <div>
+                <input onclick="telephone_extend()" type="radio" id="telephone_radio" name="radio" value="0" required>
+                <label for="telephone_radio">Телефон</label>
+            </div>
+
+            <div class="telephone_add" id="telephone_add">
+                <h1 class="">Выберите нужные опции</h1>
+                <div class="checkbox_telephone" id="checkbox_telephone">
+                    <div>
+                        <input value="2000" type="checkbox" name="checkbox_sim" id="checkbox_sim">
+                        <label for="checkbox_sim">2 слота для SIM</label>
+                    </div>
+
+                    <div>
+                        <input value="5000" type="checkbox" name="checkbox_5g" id="checkbox_5g">
+                        <label for="checkbox_5g">5G сеть</label>
+                    </div>
+
+                    <div>
+                        <input value="300" type="checkbox" name="checkbox_case" id="checkbox_case">
+                        <label for="checkbox_case">Чехол в комлекте</label>
+                    </div>
+
+                    <div>
+                        <input value="1000" type="checkbox" name="checkbox_charger" id="checkbox_charger">
+                        <label for="checkbox_charger">Зарядка в комплекте</label>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <input onclick="case_extend()" type="radio" id="case" name="radio" value="1" required>
+                <label for="case">Чехол</label>
+            </div>
+
+            <div class="case_add" id="case_add">
+                <label for="colors">Выберите цвет:</label>
+                <select name="colors" id="colors" required>
+                    <option value="490" class="">Чёрный</option>
+                    <option value="549" class="">Белый</option>
+                    <option value="590" class="">Синий</option>
+                </select>
+            </div>
+
+            <div>
+                <input onclick="headphone_extend()" type="radio" id="headphone" name="radio" value="2" required>
+                <label for="headphone">Наушники</label>
+            </div>
+        </div>
+
+        <label class="" for="number_items">Количество выбранного товара:</label>
+        <input type="number" id="number_items" min="1" required>
+
+        <input type="button" id="button_items" onclick="calculate_price_items()" value="Подсчитать стоимость"  required>
+
+        <label for="result_items" class="">Стоимость заказа:</label>
+        <div id="result_items" class=""></div>
+    </div>
+</main>
+
+    <footer>
+        <p class=" text_in_footer">created by</p>
+        <h3 class=" text_in_footer">Салмон Бачонаев</h3>
+    </footer>
+</body>
+
+</html>
