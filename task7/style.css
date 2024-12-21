@@ -1,0 +1,21 @@
+main
+{
+    display: block;
+    flex-direction: row;
+    align-items: normal;
+}
+
+div.gallery
+{
+    top: 150px;
+    width: 95%;
+    left: 2.5%;
+    right: 2.5%;
+}
+
+img.for-gallery
+{
+    margin: 0 auto;
+    width: 350px;
+    height: 350px;
+}
