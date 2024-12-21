@@ -1,79 +1,80 @@
-div.calculator
-{
-    margin: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Общие стили */
+.box {
     background-color: #4b454b;
     border: #ffd866 solid 2px;
     border-radius: 5px;
     padding: 10px;
 }
 
-div#result
-{
-    background-color: #645b64;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-input#number
-{
-    margin-bottom: 5px;
-}
-
-div.services_calculator
-{
-    margin: 10px;
+div.calculator,
+div.services_calculator {
+    @extend .box;
+    margin: 25px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #4b454b;
-    border: #ffd866 solid 2px;
-    border-radius: 5px;
-    padding: 10px;
-    min-width: 50%;
 }
 
-div.telephone_add
-{
-    display: flex;
-    flex-direction: column;
-    margin: 15px;
-}
-
-div.telephone_add
-{
-    display: none;
-}
-
-div#radio
-{
-    display: flex;
-    flex-direction: column;
-}
-
-div.case_add
-{
-    display: none;
-    margin-left: 25px;
-}
-
-div#result_items
-{
+/* Результаты */
+div#result,
+div#result_items {
     background-color: #d4d4d7;
     border-radius: 5px;
     padding: 5px;
+    color: #000;
 }
 
-input#number_items
-{
+/* Интерактивные элементы */
+input#number,
+input#number_items {
     margin-bottom: 5px;
 }
 
+input#number_items:hover,
+input#button_items:hover {
+    background-color: #ffd866;
+    color: #4b454b;
+    cursor: pointer;
+}
+
+input#number_items:focus {
+    outline: 2px solid #ffd866;
+}
+
+/* Радиокнопки и чекбоксы */
+div#radio {
+    display: flex;
+    flex-direction: column;
+}
+
+div.telephone_add,
+div.case_add {
+    display: none;
+    flex-direction: column;
+    margin: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+div.telephone_add.active,
+div.case_add.active {
+    display: flex;
+}
+
+/* Адаптация для широких экранов */
 @media screen and (min-width: 1100px) {
-    div.services_calculator
-    {
+    div.services_calculator {
         min-width: 30%;
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media screen and (max-width: 600px) {
+    div.services_calculator {
+        min-width: 90%;
+        padding: 5px;
+    }
+
+    input#number_items {
+        width: 100%;
     }
 }
