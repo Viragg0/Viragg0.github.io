@@ -1,102 +1,100 @@
-// Ожидаем загрузки DOM, чтобы убедиться, что весь HTML контент доступен
-document.addEventListener('DOMContentLoaded', () => {
+function saveBeforeInput(id) {
+    $(id)[0].addEventListener("input", function () {
+        localStorage.setItem(id, $(id).val());
+    });
+}
 
-  // Получаем элементы модального окна и формы по их ID
-  const modal = document.getElementById('modal');
-  const openModalButton = document.getElementById('open-modal');
-  const closeModalButton = document.getElementById('close-modal');
-  const feedbackForm = document.getElementById('feedback-form');
-  const successMessage = document.getElementById('success-message');
-  const errorMessage = document.getElementById('error-message');
+function setInStart(id) {
+    $(id).val(localStorage.getItem(id));
+}
 
-  // Функция для восстановления данных формы из LocalStorage
-  const restoreFormData = () => {
-      document.getElementById('name').value = localStorage.getItem('name') || '';  // Восстанавливаем имя
-      document.getElementById('email').value = localStorage.getItem('email') || '';  // Восстанавливаем email
-      document.getElementById('phone').value = localStorage.getItem('phone') || '';  // Восстанавливаем телефон
-      document.getElementById('organization').value = localStorage.getItem('organization') || '';  // Восстанавливаем организацию
-      document.getElementById('message').value = localStorage.getItem('message') || '';  // Восстанавливаем сообщение
-      document.getElementById('consent').checked = localStorage.getItem('consent') === 'true';  // Восстанавливаем согласие
-  };
+/*function isTelephone(str) {
+    if (str in (/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/)) {
+        return true;
+    }
+    return false;
+}*/
 
-  // Восстановление данных при загрузке страницы
-  restoreFormData();
+function closePopUp() {
+    $("#no-pop-up").fadeTo("fast", "1").removeClass("user-select-none");
+    $("#pop-up").fadeTo("fast", "0").hide();
+    $("a").removeClass("pointer-event-none");
+}
 
-  // Функция для сохранения данных формы в LocalStorage
-  const saveFormData = () => {
-      // Массив с ID полей формы
-      const fields = ['name', 'email', 'phone', 'organization', 'message', 'consent'];
+function openPopUp() {
+    $("#no-pop-up").fadeTo("fast", "0.25").addClass("user-select-none");
+    $("#pop-up").fadeTo("fast", "1").addClass("user-select-none");
+    $("a").addClass("pointer-event-none");
+    $("#close-pop-up").addClass("user-select-none");
+}
 
-      // Для каждого поля сохраняем его значение в LocalStorage
-      fields.forEach(field => {
-          const element = document.getElementById(field);
-          if (element) {
-              if (field === 'consent') {
-                  // Для чекбокса сохраняем состояние (checked)
-                  localStorage.setItem(field, element.checked);
-              } else {
-                  // Для остальных полей сохраняем значение (value)
-                  localStorage.setItem(field, element.value);
-              }
-          }
-      });
-  };
+function main() {
+    // Local Storage API
+    let idList = ["#fio", "#email", "#telephone", "#organization", "#message"];
+    for (let i = 0; i < idList.length; i++) {
+        setInStart(idList[i]);
+        saveBeforeInput(idList[i]);
+    }
 
-  // Добавляем обработчик событий на элементы формы для сохранения данных в LocalStorage при каждом изменении
-  const formElements = feedbackForm.querySelectorAll('input, textarea');
-  formElements.forEach(element => {
-      element.addEventListener('input', saveFormData);
-  });
+    // History API & animations
+    window.addEventListener("popstate", function () {
+        if (history.state == null) {
+            closePopUp();
+        }
+        if (history.state == "pop-up") {
+            openPopUp();
+        }
+    });
 
-  // Открытие модального окна
-  openModalButton.addEventListener('click', () => {
-      modal.classList.add('active');  // Добавляем класс для отображения модального окна
-      history.pushState(null, '', '#feedback');  // Добавляем хеш в URL для поддержания состояния
-  });
+    $("#button-to-pop-up").click(function () {
+        history.pushState("pop-up", null, "form-pop-up");
+        openPopUp();
+    });
 
-  // Закрытие модального окна при нажатии на кнопку закрытия или при изменении URL (попытка назад)
-  closeModalButton.addEventListener('click', closeModal);
-  window.addEventListener('popstate', closeModal);
+    $("#close-pop-up").click(function () {
+        history.back();
+        closePopUp();
+    });
 
-  // Функция закрытия модального окна
-  function closeModal() {
-      modal.classList.remove('active');  // Убираем класс для скрытия модального окна
-      history.replaceState(null, '', window.location.pathname);  // Убираем хеш #feedback из URL
-  }
+    // formcarry
+    $(function () {
+        $(".formcarryForm").submit(function (e) {
+            e.preventDefault();
+            var href = $(this).attr("action");
 
-  // Обработчик отправки формы
-  feedbackForm.addEventListener('submit', (e) => {
-      e.preventDefault();  // Отменяем стандартное поведение отправки формы
+            $.ajax({
+                type: "POST",
+                url: href,
+                data: new FormData(this),
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status == "success") {
+                        history.back();
+                        closePopUp();
+                        alert("We received your submission, thank you!");
+                    } else if (response.code === 422) {
+                        alert("Field validation failed");
+                        $.each(response.errors, function (key) {
+                            $('[name="' + key + '"]').addClass('formcarry-field-error');
+                        });
+                    } else {
+                        alert("An error occured: " + response.message);
+                    }
+                },
+                error: function (jqXHR, textStatus) {
+                    const errorObject = jqXHR.responseJSON
 
-      // Собираем данные формы
-      const Data = new FormData(feedbackForm);
+                    alert("Request failed, " + errorObject.title + ": " + errorObject.message);
+                },
+                complete: function () {
+                    // This will be fired after request is complete whether it's successful or not.
+                    // Use this block to run some code after request is complete.
+                }
+            });
+        });
+    });
+}
 
-      // Отправляем данные формы на сервер с помощью Fetch API
-      fetch('https://formcarry.com/s/Qm0VvOAbYfu', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-          body: JSON.stringify(Object.fromEntries(Data.entries()))  // Преобразуем FormData в объект JSON
-      })
-      .then(response => {
-          if (response.ok) {
-              // Если ответ от сервера успешный, показываем сообщение об успехе
-              successMessage.style.display = 'block';
-              errorMessage.style.display = 'none';
-
-              // Очищаем данные формы и LocalStorage
-              feedbackForm.reset();
-              localStorage.clear();
-          } else {
-              // Если произошла ошибка при отправке, показываем сообщение об ошибке
-              errorMessage.style.display = 'block';
-              successMessage.style.display = 'none';
-          }
-      })
-      .catch(error => {
-          // Если произошла ошибка при запросе (например, нет соединения), показываем сообщение об ошибке
-          errorMessage.style.display = 'block';
-          successMessage.style.display = 'none';
-          console.error('Ошибка:', error);  // Логируем ошибку в консоль
-      });
-  });
-});
+$(document).ready(main());
