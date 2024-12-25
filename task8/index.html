@@ -1,33 +1,104 @@
 <!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="index.js"></script>
-  <title>Task 8</title>
-</head>
-<body>
-  <button id="open-modal">Открыть форму обратной связи</button>
+<html lang="en">
 
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close-btn" id="close-modal">Закрыть</span>
-      <h2 class="title">Обратная связь</h2>
-      <form id="feedback-form">
-        <input name="ФИО" type="text" id="name" placeholder="ФИО" required>
-        <input name="email" type="email" id="email" placeholder="Email" required>
-        <input name="tel" type="tel" id="phone" placeholder="Телефон" required>
-        <input name="organization" type="text" id="organization" placeholder="Организация" required>
-        <textarea name="message" id="message" placeholder="Сообщение" required></textarea>
-        <label style="margin-bottom: 15px;">
-          <input type="checkbox" id="consent" required style="margin-right: 10px;">Согласен с политикой обработки персональных данных
-        </label>
-        <button class="send" type="submit">Отправить</button>
-        <div class="error" id="error-message">Произошла ошибка. Попробуйте снова.</div>
-        <div class="success" id="success-message">Ваше сообщение отправлено!</div>
-      </form>
-    </div>
-  </div>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <script src="/jquery.js" defer></script>
+    <script src="script.js" defer></script>
+    <title>Задание 8</title>
+</head>
+
+<body id="body">
+
+<div id="no-pop-up">
+    <header>
+        <nav class="header-logo">
+            <img class="header-logo" src="/logo.png" alt="Logo">
+        </nav>
+        <nav class="header-info">
+            <h2 class="black header-title">$$$ website?</h2>
+            <h3 class="black header-task">Задание 8</h3>
+        </nav>
+    </header>
+
+    <aside>
+        <nav class="aside-link">
+            <a href="../index.html" class="black">Главная страница</a>
+        </nav>
+    </aside>
+
+    <main id="main">
+        <div id="to-pop-up">
+            <h1 class="black center-text">Нажмите кнопку, если хотите заполнить форму</h1>
+            <img id="img-dog" src="/dog-with-butterfly.jpg" alt="Собака с бабочкой">
+            <div class="div_button" id="button-to-pop-up">Хочу заполнить форму</div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="black text_in_footer">created by</p>
+        <h3 class="black text_in_footer">Денис Чупилко</h3>
+    </footer>
+</div>
+
+<div id="pop-up">
+    <form id="form-back"
+          class="formcarryForm"
+          action="https://formcarry.com/s/3tEO8VQIzT"
+          enctype="multipart/form-data">
+        <div id="close-pop-up">
+            <p id="for-x">X</p>
+        </div>
+        <h1 id="h1-form" class="black">Форма</h1>
+
+        <div id="if-error">
+            <p>Неправильный ввод номера телефона</p>
+        </div>
+
+        <div class="div-input">
+            <label id="for-fio" class="black label-center" for="fio">ФИО</label>
+            <input name="fio" class="size-input" id="fio" type="text" required>
+        </div>
+
+        <div class="div-input">
+            <label id="for-email" class="black label-center" for="email">Email</label>
+            <input name="email" class="size-input" id="email" type="email" required>
+        </div>
+
+        <div class="div-input">
+            <label id="for-telephone" class="black label-center" for="telephone">Телефон</label>
+            <input name="telephone" class="size-input" id="telephone" type="tel" required>
+        </div>
+
+        <div class="div-input">
+            <label id="for-organization" class="black label-center" for="organization">Организация</label>
+            <input name="organization" class="size-input" id="organization" type="text" required>
+        </div>
+
+        <div class="div-input">
+            <label id="for-message" class="black label-center" for="message">Сообщение</label>
+            <textarea name="message" id="message" required></textarea>
+        </div>
+
+        <div>
+            <input id="checkbox" type="checkbox" required>
+            <label id="for-checkbox" class="black" for="checkbox">Согласие на обработку персональных данных</label>
+        </div>
+
+        <div id="div-with-submit">
+            <input id="submit-request" class="div_button" type="submit" value="Отправить данные">
+        </div>
+    </form>
+</div>
+
 </body>
+
 </html>
